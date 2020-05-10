@@ -10,8 +10,8 @@ swizzin was designed to be an easy to use, modular seedbox solution.
 
 ### Supported Operating Systems
 
-- Debian 8/9/10
-- Ubuntu 16.04 and Ubuntu 18.04
+- Debian 9/10
+- Ubuntu 16.04, 18.04 and 20.04
 
 ### Recommended Hardware
 
