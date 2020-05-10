@@ -31,7 +31,7 @@ There are a couple options you can set **before** installing transmission throug
 
 The names of the variables correlate to the similar equivalent variables available here on the Transmission configuration docs page https://github.com/transmission/transmission/wiki/Editing-Configuration-Files
 
-If you'd like to use one of these, run `export option=value` **before** running the install command.
+If you'd like to use one of these, run `export option=value` **before** running the install command. In case you are using `sudo ...` to run the script, you will then need to tell sudo to pass the variables through by using `sudo -E ...`.
 
 The following is an example of how this would look
 
