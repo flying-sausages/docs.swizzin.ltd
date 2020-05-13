@@ -150,9 +150,43 @@ Rtorrent is the process doing the "work", and r**u**torrent is a WEB frontend wh
 
 ### rtorrent doesn't start up
 
-You might get a good look at what is causing the service to fail by simply running `rtorrent` while logged in as the user you're troubleshooting for.
+You might get a good look at what is causing the service to fail by simply running `rtorrent` while logged in as the user you're troubleshooting for. You can also check `systemctl status rtorrent@<user>`
 
 Half the time time, the issue stems from either an invalid configuration in the `.rtorrent.rc` file, or file/directory permissions of the resources rtorrent is attempting to access.
+
+The other half of the times, it might be the case that your rtorrent has not stopped properly and has left behind the `rtorrent.lock` file. If this file is present, it will prevent any rtorrent process from starting.
+
+To troubleshoot the above issues, you can try our child-tested and mother approved rtorrent troubleshooting dance.
+::: warning Disclaimer
+Please note that while this won't necessarily fix your setup straight away, it will help you expose the culprit of the issue. If you find something that is out of line, you'll have a lead.
+:::
+
+```bash
+# !!! This dance assumes you are logged into the console as the user who is having the issues. Otherwise use su, or replace the ~s and variables.
+
+# Stop rtorrent if it is currently running in some odd state.
+sudo systemctl stop rtorrent@$USER
+#Check there are no screen sessions running for rtorrent
+screen -ls
+# Verify there is no other random rtorrent process running
+ps x | grep rtorrent
+# Check if the lock file exists
+find ~ -name "*rtorrent.lock"
+# Remove the file that prevents the startup
+rm ~/.sessions/rtorrent.lock # Or whatever the path was that returned above
+#Verify that rtorrent can start successfully
+rtorrent
+# Quit the rtorrent 
+# <Press CTRL+q>
+# Start the rtorrent service
+sudo systemctl start rtorrent@$USER
+# check the output
+systemctl status rtorrent@$USER
+# See if you can attach the screen with rtorrent
+screen -r rtorrent
+# !!! DETACH from the screen
+# <Press CTRL+a (release) d>
+```
 
 ### The Web UI is broken
 
