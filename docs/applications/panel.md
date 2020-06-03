@@ -197,5 +197,9 @@ systemctl restart panel
 
 ## Troubleshooting
 
+::: tip 
+You can always also try the [general troubleshooting tips written in our guide](/guides/troubleshooting). They might or might not apply, but asking these questions can often make you understand what is under the hood better and help you find what needs to be fixed. It's always worth a shot!
+:::
+
 ### Logs
 You can retrieve the logs of panel by running `sudo journalctl -u panel`. The logs contain the output of the python application.
