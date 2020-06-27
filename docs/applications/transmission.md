@@ -88,7 +88,12 @@ sudo systemctl disable transmission@<user>
 <!--END_DOCUSAURUS_CODE_TABS-->
 
 ## Connecting to Transmission Remote
+### Locally on the command line
+A CLI package is available to issue commands directly to an instance of your choosing.
 
+An  example could look like the following: `transmission-remote localhost:9420 -n sausage:Fat4$$P@$$w0rd`, given that `9420` is the RPC port, `sausage` is the username, and `Fat4$$P@$$w0rd` is the password. Please issue your command with the `-v` flag to test if you are able to connect, and consult the `man` or `--help` for the available options.
+
+### Using GUI Applications remotely
 <img src="https://camo.githubusercontent.com/262dda501114cb91dceee1a738b6e3679cf37160/687474703a2f2f692e696d6775722e636f6d2f584262463456682e706e67" alt="Transmission Remote" width="500"/>
 
 Transmission [has a desktop remote application available](https://github.com/transmission-remote-gui/transgui/releases), as well as a couple mobile remote clients for both Android [(1)](https://play.google.com/store/apps/details?id=net.yupol.transmissionremote.app&hl=en) [(2)](https://play.google.com/store/apps/details?id=com.neogb.rtac&hl=en) and [iOS](https://github.com/alcheck/transshift)
